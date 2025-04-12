@@ -3,9 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Karina Fan Website</title>
+    <style>
+        :root {
+            --primary-blue: #3dbad7;
+            --secondary-blue: #5f90e5;
+            --accent-silver: #f0f0f0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+        }
+
+        .birthday-banner {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .banner-text {
+            font-size: 4em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .countdown {
+            font-size: 1.8em;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            animation: fall 3s linear infinite;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fan-messages {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 15px;
+        }
+
+        .timeline {
+            padding: 40px;
+        }
+
+        .timeline-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .timeline-item {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-image:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-item h3 {
+            color: var(--accent-silver);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline-container {
+                padding: 10px;
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                margin: 10px;
+            }
+
+            .timeline-image {
+                height: 150px;
+            }
+
+            .banner-text {
+                font-size: 2.5em;
+            }
+
+            .countdown {
+                font-size: 1.3em;
+            }
+        }
+
+        .easter-egg {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <!-- Birthday Banner -->
+    <section class="birthday-banner">
+        <h1 class="banner-text">Happy Birthday, Karina! ✨</h1>
+        <div class="countdown" id="birthday-countdown"></div>
+        <div id="confetti-container"></div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="photo-gallery">
+        <div class="gallery-item">
+            <img src="karina.jpeg" alt="Karina">
+        </div>
+    </section>
+
+    <!-- Fan Messages -->
+    <section class="fan-messages">
+        <h2>Messages from MY</h2>
+        <div id="message-carousel"></div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline">
+        <h2>Karina Moments</h2>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <h3>April 11, 2000</h3>
+                <p>Born in Gyeonggi-do, South Korea</p>
+                <img src="kbaby.jpg" alt="Karina Profile" class="timeline-image">
+            </div>
+            <div class="timeline-item">
+                <h3>October 2020</h3>
+                <p>Pre-debut (Taemin's MV)</p>
+                <img src="taemin.jpg" alt="Karina Reveal" class="timeline-image">
+            </div>
+            <div class="timeline-item">
+                <h3>November 17, 2020</h3>
+                <p>Official debut with "Black Mamba"</p>
+                <img src="debut.jpg" alt="Black Mamba Era" class="timeline-image">
+            </div>
+            <div class="timeline-item">
+                <h3>April 2022</h3>
+                <p>Coachella Performance - First time performing at Coachella</p>
+                <img src="coachella-performance.jpg" alt="Coachella Performance" class="timeline-image">
+            </div>
+            <div class="timeline-item">
+                <h3>January 2023</h3>
+                <p>Appointed as Prada Global Ambassador</p>
+                <img src="prada.jpg" alt="Karina for Prada" class="timeline-image">
+            </div>
+            <div class="timeline-item">
+                <h3>August 12, 2024</h3>
+                <p>Announced as Musinsa Beauty Ambassador</p>
+                <img src="musinasa.png" alt="Karina for Musinsa" class="timeline-image">
+            </div>
+            <div class="timeline-item">
+                <h3>October 19, 2024</h3>
+                <p>Solo song (UP) First Win</p>
+                <img src="up.jpg" alt="1st Win" class="timeline-image">
+            </div>
+            <div class="timeline-item">
+                <h3>February 2025</h3>
+                <p>Selected as Sprite Korea Ambassador</p>
+                <img src="sprite.jpg" alt="Karina for Sprite" class="timeline-image">
+            </div>
+            <div class="timeline-item">
+                <h3>February 2025</h3>
+                <p>G-Dragon MV</p>
+                <img src="gd-karina.jpg" alt="G-Dragon MV" class="timeline-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Playlist -->
+    <section class="playlist">
+        <iframe 
+            style="border-radius:12px" 
+            src="https://open.spotify.com/embed/artist/2qwDjeSYANOOBFU8jwtBXx?utm_source=generator" 
+            width="100%" 
+            height="352" 
+            frameborder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+        </iframe>
+    </section>
+
+    <!-- Easter Egg -->
+    <div class="easter-egg" id="easter-egg">❤️</div>
+
+    <script>
+        // Confetti Animation
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            document.getElementById('confetti-container').appendChild(confetti);
+            confetti.addEventListener('animationend', () => confetti.remove());
+        }
+        setInterval(createConfetti, 100);
+
+        // Fan Messages Carousel
+        const messages = [
+            "You're amazing, Karina!",
+            "Happy Birthday!",
+            "We love you! 💙"
+        ];
+        let currentMessage = 0;
+        const messageCarousel = document.getElementById('message-carousel');
+
+        function updateMessage() {
+            messageCarousel.textContent = messages[currentMessage];
+            currentMessage = (currentMessage + 1) % messages.length;
+        }
+        updateMessage();
+        setInterval(updateMessage, 3000);
+
+        // Birthday Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const birthdayThisYear = new Date(now.getFullYear(), 3, 11); // April = 3 (0-based)
+            const nextBirthday = now > birthdayThisYear ? new Date(now.getFullYear() + 1, 3, 11) : birthdayThisYear;
+            const diff = nextBirthday - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("birthday-countdown").innerHTML =
+                `🎂 ${days}d ${hours}h ${minutes}m ${seconds}s until Karina's birthday! 🎉`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
 </html>
